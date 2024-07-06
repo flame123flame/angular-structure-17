@@ -12,6 +12,8 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular
 import { apiInterceptor } from './core/interceptors/api.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { SpinnerInterceptorService } from './core/services/spinner-interceptor.service';
+import { AuthGuard } from './core/guard/auth.guard';
+import { NoAuthGuard } from './core/guard/no-auth.guard';
 
 
 registerLocaleData(en);
@@ -33,6 +35,8 @@ export const appConfig: ApplicationConfig = {
         errorInterceptor
       ])
     ),
+    NoAuthGuard,
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true },
 
   ]

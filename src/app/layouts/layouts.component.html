@@ -7,28 +7,51 @@
         <h1>Ant Design Of Angular</h1>
       </a>
     </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+    <ul nz-menu nzMode="inline" nzTheme="dark">
+      <li *ngFor="let item of menuItems; trackBy: trackByTitle" nz-submenu [nzTitle]="item.title!" [nzIcon]="item.icon!" [nzOpen]="item.open">
         <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+          <li *ngFor="let subItem of item.subMenu; trackBy: trackByGroupTitle">
+            <ng-container *ngIf="subItem.groupTitle">
+              <li nz-menu-group [nzTitle]="subItem.groupTitle">
+                <ul>
+                  <li *ngFor="let groupItem of subItem.subMenu; trackBy: trackByTitle" nz-menu-item [nzSelected]="groupItem.selected">
+                    <a [routerLink]="groupItem.route">{{ groupItem.title }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="!subItem.groupTitle && subItem.subMenu">
+              <li nz-submenu [nzTitle]="subItem.title!">
+                <ul>
+                  <li *ngFor="let nestedItem of subItem.subMenu; trackBy: trackByTitle">
+                    <ng-container *ngIf="nestedItem.subMenu">
+                      <li nz-submenu [nzTitle]="nestedItem.title!">
+                        <ul>
+                          <li *ngFor="let deepItem of nestedItem.subMenu; trackBy: trackByTitle" nz-menu-item>
+                            <a [routerLink]="deepItem.route">{{ deepItem.title }}</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ng-container>
+                    <ng-container *ngIf="!nestedItem.subMenu">
+                      <li nz-menu-item>
+                        <a [routerLink]="nestedItem.route">{{ nestedItem.title }}</a>
+                      </li>
+                    </ng-container>
+                  </li>
+                </ul>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="!subItem.groupTitle && !subItem.subMenu">
+              <li nz-menu-item>
+                <a [routerLink]="subItem.route">{{ subItem.title }}</a>
+              </li>
+            </ng-container>
           </li>
         </ul>
       </li>
     </ul>
+    
   </nz-sider>
   <nz-layout>
     <nz-header>
@@ -39,9 +62,7 @@
       </div>
     </nz-header>
     <nz-content>
-      <div class="inner-content">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>
 </nz-layout>

@@ -21,6 +21,12 @@ export const routes: Routes = [
         path: "dashboard",
         loadChildren: () => import("./modules/dashboard/dashboard.routes")
       },
+      {
+        path: "manager",
+        loadChildren: () => import("./modules/user-manager/user-manager.routes")
+      },
+
+      
     ]
   }
 ];
