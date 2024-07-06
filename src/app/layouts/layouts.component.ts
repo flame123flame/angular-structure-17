@@ -33,7 +33,7 @@ export class LayoutsComponent {
           groupTitle: "Item 1",
           subMenu: [
             { title: "Option 1", selected: true, route: '/feature/manager/user' },
-            { title: "Option 2", route: '/option2' }
+            { title: "Option 2", route: '/feature/manager/role' }
           ]
         },
         {
@@ -60,7 +60,7 @@ export class LayoutsComponent {
               title: "Submenu",
               subMenu: [
                 { title: "Option 9", route: '/option9' },
-                { title: "Option 10", route: '/option10' }
+                { title: "Option 10", route: '/feature/manager/user' }
               ]
             }
           ]
