@@ -51,7 +51,6 @@
         </ul>
       </li>
     </ul>
-    
   </nz-sider>
   <nz-layout>
     <nz-header>
@@ -59,6 +58,15 @@
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
           <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
         </span>
+        <div class="header-right">
+          <div class="user-profile">
+            <nz-avatar nzIcon="user"></nz-avatar>
+            <div class="user-info">
+              <span class="user-name">User Name</span>
+              <span class="user-position">Position Title</span>
+            </div>
+          </div>
+        </div>
       </div>
     </nz-header>
     <nz-content>

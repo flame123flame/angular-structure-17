@@ -18,7 +18,7 @@
 
 .header-trigger {
     height: 64px;
-    padding: 20px 24px;
+    padding-left: 20px;
     font-size: 20px;
     cursor: pointer;
     transition: all .3s, padding 0s;
@@ -78,3 +78,42 @@ nz-content {
     background: #fff;
     height: 100%;
 }
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .header-action {
+    margin-right: 16px;
+    cursor: pointer;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    line-height: 1.2; /* Adjusts the spacing between lines */
+  }
+  
+  .user-name {
+    font-weight: bold;
+  }
+  
+  .user-position {
+    font-size: 0.85em;
+    color: #888;
+  }
+  

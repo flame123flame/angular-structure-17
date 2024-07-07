@@ -8,7 +8,10 @@ import { SpinnerLoadComponent } from './shared/components/spinner-load/spinner-l
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, NgZorroAntdModule, SpinnerLoadComponent],
-  template: `<router-outlet></router-outlet><app-spinner-load></app-spinner-load>`,
+  template: `
+  <router-outlet></router-outlet>
+  <app-spinner-load></app-spinner-load>
+  `,
 })
 export class AppComponent {
   isCollapsed: boolean = false;
