@@ -131,67 +131,6 @@ export class LayoutsComponent {
   ];
   
   
-  
-  // menuItems: MenuItem[] = [
-  //   {
-  //     title: "หน้าแรก",
-  //     icon: "windows",
-  //     route: '/dashboard',
-  //     subMenu: []
-  //   },
-  //   {
-  //     title: "ข้อมูลผู้ใช้งาน",
-  //     icon: "mail",
-  //     subMenu: [
-  //       {
-  //         groupTitle: "Item 1",
-  //         subMenu: [
-  //           { title: "Option 1",  route: '/manager/user' },
-  //           { title: "Option 2", route: '/manager/role' }
-  //         ]
-  //       },
-  //       {
-  //         groupTitle: "Item 2",
-  //         subMenu: [
-  //           { title: "Option 3", route: '/option3' },
-  //           { title: "Option 4", route: '/option4' }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: "Navigation Two",
-  //     icon: "appstore",
-  //     subMenu: [
-  //       { title: "Option 5", route: '/manager/role' },
-  //       { title: "Option 6", route: '/option6' },
-  //       {
-  //         title: "Submenu",
-  //         subMenu: [
-  //           { title: "Option 7", route: '/option7' },
-  //           { title: "Option 8", route: '/option8' },
-  //           {
-  //             title: "Submenu",
-  //             subMenu: [
-  //               { title: "Option 9", route: '/option9' },
-  //               { title: "Option 10", route: '/manager/user' }
-  //             ]
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: "Navigation Three",
-  //     icon: "setting",
-  //     subMenu: [
-  //       { title: "Option 11", route: '/option11' },
-  //       { title: "Option 12", route: '/option12' },
-  //       { title: "Option 13", route: '/option13' }
-  //     ]
-  //   }
-  // ];
-
   trackByTitle(index: number, item: MenuItem): string {
     return item.title ?? item.groupTitle ?? '';
   }

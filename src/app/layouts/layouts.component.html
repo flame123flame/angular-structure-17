@@ -60,7 +60,10 @@
           </li>
         </ng-container>
         <ng-template #menuItem>
-          <li nz-menu-item>
+          <li nz-menu-item   nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          [nzTooltipTitle]="isCollapsed ? item.title : ''">
             <span nz-icon [nzType]="item.icon!"></span>
             <span *ngIf="!isCollapsed">{{ item.title }}</span>
             <a [routerLink]="item.route"></a>
@@ -88,6 +91,12 @@
       </div>
     </nz-header>
     <nz-content>
+      <nz-breadcrumb class="breadcrumb-custom" [nzAutoGenerate]="true"
+        [nzRouteLabel]="'breadcrumb'" >
+        <nz-breadcrumb-item>
+          <span nz-icon nzType="home" ></span>
+        </nz-breadcrumb-item>
+      </nz-breadcrumb>
       <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>

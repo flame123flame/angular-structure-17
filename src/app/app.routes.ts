@@ -22,11 +22,12 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
-        path: "dashboard",
+        path: '',
         loadChildren: () => import("./modules/dashboard/dashboard.routes")
       },
       {
         path: "user-management",
+        data: { breadcrumb: 'การจัดการผู้ใช้' },
         loadChildren: () => import("./modules/user-manager/user-manager.routes")
       }
     ]
