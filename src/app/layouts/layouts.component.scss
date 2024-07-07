@@ -5,6 +5,39 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+// .menu-sidebar .sidebar-logo.collapsed h1 {
+//     display: none;
+//   }
+  
+//   .menu-sidebar ul[nz-menu] .ant-menu-submenu-title span,
+//   .menu-sidebar ul[nz-menu] .ant-menu-item span {
+//     display: inline-block;
+//     vertical-align: middle;
+//   }
+  
+//   .menu-sidebar ul[nz-menu] .ant-menu-submenu-vertical > .ant-menu-submenu-title > .ant-menu-submenu-arrow,
+//   .menu-sidebar ul[nz-menu] .ant-menu-item span {
+//     display: inline-block;
+//     vertical-align: middle;
+//   }
+  
+//   .menu-sidebar ul[nz-menu] .ant-menu-submenu-title span:not(:first-child),
+//   .menu-sidebar ul[nz-menu] .ant-menu-item span:not(:first-child) {
+//     display: none;
+//   }
+  
+//   .menu-sidebar.collapsed ul[nz-menu] .ant-menu-submenu-title span:not(:first-child),
+//   .menu-sidebar.collapsed ul[nz-menu] .ant-menu-item span:not(:first-child) {
+//     display: none;
+//   }
+  
+//   .menu-sidebar:not(.collapsed) ul[nz-menu] .ant-menu-submenu-title span:not(:first-child),
+//   .menu-sidebar:not(.collapsed) ul[nz-menu] .ant-menu-item span:not(:first-child) {
+//     display: inline-block;
+//   }
+
+  
 .app-layout {
     height: 100vh;
 }

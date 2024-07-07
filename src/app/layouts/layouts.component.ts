@@ -25,59 +25,59 @@ export class LayoutsComponent {
   isCollapsed = false;
   menuItems: MenuItem[] = [
     {
-      title: "Dashboard",
+      title: "แดชบอร์ด",
       icon: "dashboard",
       route: '/dashboard',
       roles: ['admin', 'user', 'manager'],
     },
     {
-      title: "User Management",
+      title: "การจัดการผู้ใช้",
       icon: "user",
       roles: ['admin'],
       subMenu: [
-        { title: "Manage Users", route: '/user-management/users', roles: ['admin'] },
-        { title: "Manage Roles", route: '/user-management/roles', roles: ['admin'] },
+        { title: "จัดการผู้ใช้", route: '/user-management/users', roles: ['admin'] },
+        { title: "จัดการบทบาท", route: '/user-management/roles', roles: ['admin'] },
         {
-          groupTitle: "Permissions",
+          groupTitle: "การอนุญาต",
           subMenu: [
-            { title: "View Permissions", route: '/user-management/permissions/view', roles: ['admin'] },
-            { title: "Edit Permissions", route: '/user-management/permissions/edit', roles: ['admin'] }
+            { title: "ดูการอนุญาต", route: '/user-management/permissions/view', roles: ['admin'] },
+            { title: "แก้ไขการอนุญาต", route: '/user-management/permissions/edit', roles: ['admin'] }
           ]
         },
-        { title: "User Activity Logs", route: '/user-management/activity-logs', roles: ['admin'] }
+        { title: "บันทึกกิจกรรมผู้ใช้", route: '/user-management/activity-logs', roles: ['admin'] }
       ]
     },
     {
-      title: "Settings",
+      title: "การตั้งค่า",
       icon: "setting",
       subMenu: [
-        { title: "Profile Settings", route: '/settings/profile', roles: ['admin', 'user', 'manager'] },
-        { title: "System Settings", route: '/settings/system', roles: ['admin'] },
-        { title: "Notification Settings", route: '/settings/notifications', roles: ['admin', 'user', 'manager'] }
+        { title: "การตั้งค่าโปรไฟล์", route: '/settings/profile', roles: ['admin', 'user', 'manager'] },
+        { title: "การตั้งค่าระบบ", route: '/settings/system', roles: ['admin'] },
+        { title: "การตั้งค่าการแจ้งเตือน", route: '/settings/notifications', roles: ['admin', 'user', 'manager'] }
       ]
     },
     {
-      title: "Content Management",
+      title: "การจัดการเนื้อหา",
       icon: "file",
       roles: ['admin', 'editor'],
       subMenu: [
-        { title: "Manage Posts", route: '/content-management/posts', roles: ['admin', 'editor'] },
-        { title: "Manage Pages", route: '/content-management/pages', roles: ['admin', 'editor'] },
+        { title: "จัดการโพสต์", route: '/content-management/posts', roles: ['admin', 'editor'] },
+        { title: "จัดการหน้า", route: '/content-management/pages', roles: ['admin', 'editor'] },
         {
-          groupTitle: "Media Library",
+          groupTitle: "คลังสื่อ",
           subMenu: [
-            { title: "View Media", route: '/content-management/media/view', roles: ['admin', 'editor'] },
-            { title: "Upload Media", route: '/content-management/media/upload', roles: ['admin', 'editor'] },
+            { title: "ดูสื่อ", route: '/content-management/media/view', roles: ['admin', 'editor'] },
+            { title: "อัปโหลดสื่อ", route: '/content-management/media/upload', roles: ['admin', 'editor'] },
             {
-              title: "Sub Library",
+              title: "คลังย่อย",
               subMenu: [
-                { title: "Library Option 1", route: '/content-management/media/library1', roles: ['admin', 'editor'] },
-                { title: "Library Option 2", route: '/content-management/media/library2', roles: ['admin', 'editor'] },
+                { title: "ตัวเลือกคลัง 1", route: '/content-management/media/library1', roles: ['admin', 'editor'] },
+                { title: "ตัวเลือกคลัง 2", route: '/content-management/media/library2', roles: ['admin', 'editor'] },
                 {
-                  title: "Deep Library",
+                  title: "คลังลึก",
                   subMenu: [
-                    { title: "Deep Option 1", route: '/content-management/media/deep1', roles: ['admin', 'editor'] },
-                    { title: "Deep Option 2", route: '/content-management/media/deep2', roles: ['admin', 'editor'] }
+                    { title: "ตัวเลือกคลังลึก 1", route: '/content-management/media/deep1', roles: ['admin', 'editor'] },
+                    { title: "ตัวเลือกคลังลึก 2", route: '/content-management/media/deep2', roles: ['admin', 'editor'] }
                   ]
                 }
               ]
@@ -86,49 +86,50 @@ export class LayoutsComponent {
         }
       ]
     },
-        {
-      title: "Navigation Two",
+    {
+      title: "เมนูนำทางสอง",
       icon: "appstore",
       subMenu: [
-        { title: "Option 5", route: '/manager/role' },
-        { title: "Option 6", route: '/option6' },
+        { title: "ตัวเลือก 5", route: '/manager/role' },
+        { title: "การตั้งค่าการแจ้งเตือนการตั้งค่าการแจ้งเตือน", route: '/option6' },
         {
-          title: "Submenu",
+          title: "การตั้งค่าการแจ้งเตือนการตั้งค่าการแจ้งเตือน",
           subMenu: [
-            { title: "Option 7", route: '/option7' },
-            { title: "Option 8", route: '/option8' },
+            { title: "การตั้งค่าการแจ้งเตือนการตั้งค่าการแจ้งเตือน", route: '/option7' },
+            { title: "ตัวเลือก 8", route: '/option8' },
             {
-              title: "Submenu",
+              title: "เมนูย่อย",
               subMenu: [
-                { title: "Option 9", route: '/option9' },
-                { title: "Option 10", route: '/manager/user' }
+                { title: "ตัวเลือก 9", route: '/option9' },
+                { title: "ตัวเลือก 10", route: '/manager/user' }
               ]
             }
           ]
         }
       ]
     },
-      {
+    {
       title: "ข้อมูลผู้ใช้งาน",
       icon: "mail",
       subMenu: [
         {
-          groupTitle: "Item 1",
+          groupTitle: "รายการที่ 1",
           subMenu: [
-            { title: "Option 1",  route: '/manager/user' },
-            { title: "Option 2", route: '/manager/role' }
+            { title: "ตัวเลือก 1", route: '/manager/user' },
+            { title: "ตัวเลือก 2", route: '/manager/role' }
           ]
         },
         {
-          groupTitle: "Item 2",
+          groupTitle: "รายการที่ 2",
           subMenu: [
-            { title: "Option 3", route: '/option3' },
-            { title: "Option 4", route: '/option4' }
+            { title: "ตัวเลือก 3", route: '/option3' },
+            { title: "ตัวเลือก 4", route: '/option4' }
           ]
         }
       ]
-    },
+    }
   ];
+  
   
   
   // menuItems: MenuItem[] = [
