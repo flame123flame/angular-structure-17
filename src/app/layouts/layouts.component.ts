@@ -25,14 +25,13 @@ export class LayoutsComponent {
 
   menuItems: MenuItem[] = [
     {
-      title: "Navigation One",
+      title: "ข้อมูลผู้ใช้งาน",
       icon: "mail",
-      open: true,
       subMenu: [
         {
           groupTitle: "Item 1",
           subMenu: [
-            { title: "Option 1", selected: true, route: '/feature/manager/user' },
+            { title: "Option 1",  route: '/feature/manager/user' },
             { title: "Option 2", route: '/feature/manager/role' }
           ]
         },

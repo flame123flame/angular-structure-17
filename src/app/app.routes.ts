@@ -6,9 +6,13 @@ import { AuthGuard } from './core/guard/auth.guard';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/auth' },
   {
-    
     path: "auth",
     loadChildren: () => import("./modules/authentication/authentication.routes"),
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: "exception",
+    loadChildren: () => import("./core/common/common.routes"),
     canActivate: [NoAuthGuard],
   },
   {
@@ -24,9 +28,7 @@ export const routes: Routes = [
       {
         path: "manager",
         loadChildren: () => import("./modules/user-manager/user-manager.routes")
-      },
-
-      
+      }
     ]
   }
 ];
