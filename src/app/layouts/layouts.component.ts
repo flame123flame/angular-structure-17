@@ -108,6 +108,26 @@ export class LayoutsComponent {
         }
       ]
     },
+      {
+      title: "ข้อมูลผู้ใช้งาน",
+      icon: "mail",
+      subMenu: [
+        {
+          groupTitle: "Item 1",
+          subMenu: [
+            { title: "Option 1",  route: '/manager/user' },
+            { title: "Option 2", route: '/manager/role' }
+          ]
+        },
+        {
+          groupTitle: "Item 2",
+          subMenu: [
+            { title: "Option 3", route: '/option3' },
+            { title: "Option 4", route: '/option4' }
+          ]
+        }
+      ]
+    },
   ];
   
   
