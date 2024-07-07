@@ -16,17 +16,17 @@ export const routes: Routes = [
     canActivate: [NoAuthGuard],
   },
   {
-    path: 'feature',
+    path: '',
     component: LayoutsComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'feature/dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
         path: "dashboard",
         loadChildren: () => import("./modules/dashboard/dashboard.routes")
       },
       {
-        path: "manager",
+        path: "user-management",
         loadChildren: () => import("./modules/user-manager/user-manager.routes")
       }
     ]

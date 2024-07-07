@@ -8,49 +8,65 @@
       </a>
     </div>
     <ul nz-menu nzMode="inline" nzTheme="dark">
-      <li *ngFor="let item of menuItems; trackBy: trackByTitle" nz-submenu [nzTitle]="item.title!" [nzIcon]="item.icon!" [nzOpen]="item.open">
-        <ul>
-          <li *ngFor="let subItem of item.subMenu; trackBy: trackByGroupTitle">
-            <ng-container *ngIf="subItem.groupTitle">
-              <li nz-menu-group [nzTitle]="subItem.groupTitle">
-                <ul>
-                  <li *ngFor="let groupItem of subItem.subMenu; trackBy: trackByTitle" nz-menu-item [nzSelected]="groupItem.selected">
-                    <a [routerLink]="groupItem.route">{{ groupItem.title }}</a>
-                  </li>
-                </ul>
-              </li>
-            </ng-container>
-            <ng-container *ngIf="!subItem.groupTitle && subItem.subMenu">
-              <li nz-submenu [nzTitle]="subItem.title!">
-                <ul>
-                  <li *ngFor="let nestedItem of subItem.subMenu; trackBy: trackByTitle">
-                    <ng-container *ngIf="nestedItem.subMenu">
-                      <li nz-submenu [nzTitle]="nestedItem.title!">
-                        <ul>
-                          <li *ngFor="let deepItem of nestedItem.subMenu; trackBy: trackByTitle" nz-menu-item>
-                            <a [routerLink]="deepItem.route">{{ deepItem.title }}</a>
+      <ul nz-menu nzMode="inline" nzTheme="dark">
+        <ng-container *ngFor="let item of menuItems; trackBy: trackByTitle">
+          <ng-container *ngIf="item.subMenu && item.subMenu.length > 0">
+            <li nz-submenu [nzTitle]="item.title!" [nzIcon]="item.icon!">
+              <ul>
+                <ng-container *ngFor="let subItem of item.subMenu; trackBy: trackByGroupTitle">
+                  <ng-container *ngIf="subItem.groupTitle">
+                    <li nz-menu-group [nzTitle]="subItem.groupTitle">
+                      <ul>
+                        <ng-container *ngFor="let groupItem of subItem.subMenu; trackBy: trackByTitle">
+                          <li nz-menu-item [nzSelected]="groupItem.selected">
+                            <a [routerLink]="groupItem.route">{{ groupItem.title }}</a>
                           </li>
-                        </ul>
-                      </li>
-                    </ng-container>
-                    <ng-container *ngIf="!nestedItem.subMenu">
-                      <li nz-menu-item>
-                        <a [routerLink]="nestedItem.route">{{ nestedItem.title }}</a>
-                      </li>
-                    </ng-container>
-                  </li>
-                </ul>
-              </li>
-            </ng-container>
-            <ng-container *ngIf="!subItem.groupTitle && !subItem.subMenu">
-              <li nz-menu-item>
-                <a [routerLink]="subItem.route">{{ subItem.title }}</a>
-              </li>
-            </ng-container>
-          </li>
-        </ul>
-      </li>
-    </ul>
+                        </ng-container>
+                      </ul>
+                    </li>
+                  </ng-container>
+                  <ng-container *ngIf="!subItem.groupTitle && subItem.subMenu">
+                    <li nz-submenu [nzTitle]="subItem.title!">
+                      <ul>
+                        <ng-container *ngFor="let nestedItem of subItem.subMenu; trackBy: trackByTitle">
+                          <ng-container *ngIf="nestedItem.subMenu">
+                            <li nz-submenu [nzTitle]="nestedItem.title!">
+                              <ul>
+                                <ng-container *ngFor="let deepItem of nestedItem.subMenu; trackBy: trackByTitle">
+                                  <li nz-menu-item>
+                                    <a [routerLink]="deepItem.route">{{ deepItem.title }}</a>
+                                  </li>
+                                </ng-container>
+                              </ul>
+                            </li>
+                          </ng-container>
+                          <ng-container *ngIf="!nestedItem.subMenu">
+                            <li nz-menu-item>
+                              <a [routerLink]="nestedItem.route">{{ nestedItem.title }}</a>
+                            </li>
+                          </ng-container>
+                        </ng-container>
+                      </ul>
+                    </li>
+                  </ng-container>
+                  <ng-container *ngIf="!subItem.groupTitle && !subItem.subMenu">
+                    <li nz-menu-item>
+                      <a [routerLink]="subItem.route">{{ subItem.title }}</a>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="!item.subMenu || item.subMenu.length === 0">
+            <li nz-menu-item >
+              <span class="mr-2" nz-icon [nzType]="item.icon!" ></span>
+              <a [routerLink]="item.route">{{ item.title }}</a>
+            </li>
+          </ng-container>
+        </ng-container>
+      </ul>
+      </ul>
  
   </nz-sider>
   <nz-layout>
