@@ -2,34 +2,8 @@
 @import "./customs/padding.scss";
 @import "./customs/colors.scss";
 @import "./customs/font-size.scss";
+@import "./customs/font.scss";
 
-@font-face {
-  font-family: 'Kanit';
-  src: url(../assets/fonts/kanit/Kanit-Regular.ttf) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Kanit';
-  src: url(../assets/fonts/kanit/Kanit-Bold.ttf) format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Kanit';
-  src: url(../assets/fonts/kanit/Kanit-Italic.ttf) format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-
-/* Add other @font-face rules for different weights and styles */
-
-
-* {
-  font-family: 'Kanit', sans-serif;
-}
 
 .h-100 {
   height: 100%;
