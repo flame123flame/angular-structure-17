@@ -88,7 +88,7 @@ nz-content {
   .header-right {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 30px;
   }
   
   .header-action {
@@ -115,5 +115,11 @@ nz-content {
   .user-position {
     font-size: 0.85em;
     color: #888;
+  }
+  
+  .menu-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   
