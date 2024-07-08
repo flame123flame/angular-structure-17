@@ -1,7 +1,6 @@
 
 import { NgModule } from '@angular/core';
-
-
+import { NzColorPickerModule } from 'ng-zorro-antd/color-picker';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAnchorModule } from 'ng-zorro-antd/anchor';
@@ -139,7 +138,8 @@ import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
     NzUploadModule,
     NzWaveModule,
     NzResizableModule,
-    NzWaterMarkModule
+    NzWaterMarkModule,
+    NzColorPickerModule
   ]
 })
 export class NgZorroAntdModule {

@@ -17,7 +17,7 @@ export interface MenuItem {
 @Component({
   selector: 'app-layouts',
   standalone: true,
-  imports: [NgZorroAntdModule, RouterOutlet,CommonModule,RouterModule],
+  imports: [NgZorroAntdModule, RouterOutlet, CommonModule, RouterModule],
   templateUrl: './layouts.component.html',
   styleUrl: './layouts.component.scss'
 })
@@ -36,15 +36,16 @@ export class LayoutsComponent {
       roles: ['admin'],
       subMenu: [
         { title: "จัดการผู้ใช้", route: '/user-management/users', roles: ['admin'] },
-        { title: "จัดการบทบาท", route: '/user-management/roles', roles: ['admin'] },
+        { title: "จัดการสิทการใช้งาน", route: '/user-management/roles', roles: ['admin'] },
+        { title: "ดูประวัติการเข้าสู่ระบบ", route: '/user-management/user-activity', roles: ['admin'] },
         {
-          groupTitle: "การอนุญาต",
+          groupTitle: "เมนูการใช้งาน",
           subMenu: [
-            { title: "ดูการอนุญาต", route: '/user-management/permissions/view', roles: ['admin'] },
-            { title: "แก้ไขการอนุญาต", route: '/user-management/permissions/edit', roles: ['admin'] }
+            { title: "เมนูในระบบ", route: '/user-management/users', roles: ['admin'] },
+            { title: "ปุ่มในระบบ", route: '/user-management/buttons', roles: ['admin'] }
           ]
         },
-        { title: "บันทึกกิจกรรมผู้ใช้", route: '/user-management/activity-logs', roles: ['admin'] }
+
       ]
     },
     {
@@ -129,8 +130,8 @@ export class LayoutsComponent {
       ]
     }
   ];
-  
-  
+
+
   trackByTitle(index: number, item: MenuItem): string {
     return item.title ?? item.groupTitle ?? '';
   }
@@ -138,5 +139,5 @@ export class LayoutsComponent {
   trackByGroupTitle(index: number, item: MenuItem): string {
     return item.groupTitle ?? '';
   }
-  
+
 }

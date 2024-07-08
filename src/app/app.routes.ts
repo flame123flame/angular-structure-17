@@ -10,11 +10,7 @@ export const routes: Routes = [
     loadChildren: () => import("./modules/authentication/authentication.routes"),
     canActivate: [NoAuthGuard],
   },
-  {
-    path: "exception",
-    loadChildren: () => import("./core/common/common.routes"),
-    canActivate: [NoAuthGuard],
-  },
+
   {
     path: '',
     component: LayoutsComponent,
@@ -24,6 +20,11 @@ export const routes: Routes = [
       {
         path: '',
         loadChildren: () => import("./modules/dashboard/dashboard.routes")
+      },
+      {
+        path: "exception",
+        loadChildren: () => import("./core/common/common.routes"),
+        canActivate: [NoAuthGuard],
       },
       {
         path: "user-management",

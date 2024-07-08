@@ -8,12 +8,13 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { apiInterceptor } from './core/interceptors/api.interceptor';
-import { errorInterceptor } from './core/interceptors/error.interceptor';
+
 import { SpinnerInterceptorService } from './core/services/spinner-interceptor.service';
 import { AuthGuard } from './core/guard/auth.guard';
 import { NoAuthGuard } from './core/guard/no-auth.guard';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 
 registerLocaleData(en);
@@ -29,15 +30,19 @@ export const appConfig: ApplicationConfig = {
     provideNzI18n(en_US),
     importProvidersFrom(FormsModule, ReactiveFormsModule),
     provideAnimationsAsync(),
-    provideHttpClient(
-      withInterceptors([
-        apiInterceptor,
-        errorInterceptor
-      ])
-    ),
+    provideHttpClient(withInterceptorsFromDi(), withInterceptors([apiInterceptor])), // Include interceptors from DI
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
     NoAuthGuard,
-    AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true },
+    AuthGuard
 
   ]
 };

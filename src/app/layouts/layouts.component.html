@@ -17,7 +17,7 @@
                   <li nz-menu-group [nzTitle]="subItem.groupTitle">
                     <ul>
                       <ng-container *ngFor="let groupItem of subItem.subMenu; trackBy: trackByTitle">
-                        <li nz-menu-item [nzSelected]="groupItem.selected">
+                        <li nz-menu-item [nzSelected]="groupItem.selected" [ngStyle]="{'cursor': 'pointer'}">
                           <a [routerLink]="groupItem.route">{{ groupItem.title }}</a>
                         </li>
                       </ng-container>
@@ -29,11 +29,12 @@
                     <li nz-submenu [nzTitle]="subItem.title!">
                       <ul>
                         <ng-container *ngFor="let nestedItem of subItem.subMenu; trackBy: trackByTitle">
-                          <ng-container *ngIf="nestedItem.subMenu && nestedItem.subMenu.length > 0; else nestedMenuItem">
+                          <ng-container
+                            *ngIf="nestedItem.subMenu && nestedItem.subMenu.length > 0; else nestedMenuItem">
                             <li nz-submenu [nzTitle]="nestedItem.title!">
                               <ul>
                                 <ng-container *ngFor="let deepItem of nestedItem.subMenu; trackBy: trackByTitle">
-                                  <li nz-menu-item>
+                                  <li nz-menu-item [ngStyle]="{'cursor': 'pointer'}">
                                     <a [routerLink]="deepItem.route">{{ deepItem.title }}</a>
                                   </li>
                                 </ng-container>
@@ -41,7 +42,7 @@
                             </li>
                           </ng-container>
                           <ng-template #nestedMenuItem>
-                            <li nz-menu-item>
+                            <li nz-menu-item [ngStyle]="{'cursor': 'pointer'}">
                               <a [routerLink]="nestedItem.route">{{ nestedItem.title }}</a>
                             </li>
                           </ng-template>
@@ -51,7 +52,7 @@
                   </ng-container>
                 </ng-template>
                 <ng-template #subMenuItem>
-                  <li nz-menu-item>
+                  <li nz-menu-item [ngStyle]="{'cursor': 'pointer'}">
                     <a [routerLink]="subItem.route">{{ subItem.title }}</a>
                   </li>
                 </ng-template>
@@ -60,10 +61,8 @@
           </li>
         </ng-container>
         <ng-template #menuItem>
-          <li nz-menu-item   nz-menu-item
-          nz-tooltip
-          nzTooltipPlacement="right"
-          [nzTooltipTitle]="isCollapsed ? item.title : ''">
+          <li nz-menu-item nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="isCollapsed ? item.title : ''"
+            [ngStyle]="{'cursor': 'pointer'}">
             <span nz-icon [nzType]="item.icon!"></span>
             <span *ngIf="!isCollapsed">{{ item.title }}</span>
             <a [routerLink]="item.route"></a>
@@ -71,7 +70,8 @@
         </ng-template>
       </ng-container>
     </ul>
- 
+
+
   </nz-sider>
   <nz-layout>
     <nz-header>
@@ -91,10 +91,9 @@
       </div>
     </nz-header>
     <nz-content>
-      <nz-breadcrumb class="breadcrumb-custom" [nzAutoGenerate]="true"
-        [nzRouteLabel]="'breadcrumb'" >
+      <nz-breadcrumb class="breadcrumb-custom" [nzAutoGenerate]="true" [nzRouteLabel]="'breadcrumb'">
         <nz-breadcrumb-item>
-          <span nz-icon nzType="home" ></span>
+          <span nz-icon nzType="home"></span>
         </nz-breadcrumb-item>
       </nz-breadcrumb>
       <router-outlet></router-outlet>
