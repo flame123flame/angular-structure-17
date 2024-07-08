@@ -35,17 +35,17 @@ export class ButtonsComponent implements OnInit {
     this.getButtonData();
   }
 
-  getButtonData(): void {
+  private getButtonData(): void {
     this.buttonDataService.getAllButtonData().subscribe({
-      next: (res: CommonResponse<IButtonData[]>) => {
-        if (res.data) {
-          this.buttonDataList = res.data.map(buttonData => new ButtonsData(buttonData));
-        }
-      },
-      error: (err) => {
-        this.errorModal(err);
-      }
+      next: (res: CommonResponse<IButtonData[]>) => this.handleButtonDataSuccess(res),
+      error: (err) => this.handleError(err)
     });
+  }
+
+  private handleButtonDataSuccess(res: CommonResponse<IButtonData[]>): void {
+    if (res.data) {
+      this.buttonDataList = res.data.map(buttonData => new ButtonsData(buttonData));
+    }
   }
 
 
@@ -70,7 +70,7 @@ export class ButtonsComponent implements OnInit {
 
   createButton(newButton: IButtonData): void {
     this.buttonDataService.createButton(newButton).subscribe({
-      next: (res: CommonResponse<object>) => {
+      next: (res: CommonResponse<Object>) => {
         this.notification.create(
           'success',
           'Notification Title',
@@ -78,7 +78,7 @@ export class ButtonsComponent implements OnInit {
         );
       },
       error: (err) => {
-        this.errorModal(err);
+        this.handleError(err);
       }
     });
   }
@@ -113,7 +113,7 @@ export class ButtonsComponent implements OnInit {
     this.isVisibleModal = false;
   }
 
-  errorModal(data: any) {
+  handleError(data: any) {
     this.modal.error({
       nzTitle: 'This is an error message',
       nzContent: data.message

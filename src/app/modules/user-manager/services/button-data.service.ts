@@ -20,8 +20,8 @@ export class ButtonDataService {
     );
   }
 
-  createButton(buttonData: IButtonData): Observable<CommonResponse<object>> {
-    return this.http.post<CommonResponse<object>>(`/api/button/create`, buttonData).pipe(
+  createButton(buttonData: IButtonData): Observable<CommonResponse<Object>> {
+    return this.http.post<CommonResponse<Object>>(`/api/button/create`, buttonData).pipe(
       catchError(this.handleError)
     );
   }
