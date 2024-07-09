@@ -1,0 +1,165 @@
+<div class="mt-5">
+    <form nz-form [formGroup]="menuForm" nzLayout="vertical">
+        <button nz-button nzType="primary" type="button" (click)="addMenuItem()">Add Menu Item</button>
+        <div formArrayName="menuItems">
+            <div *ngFor="let menuItem of menuItems.controls; let i = index" [formGroupName]="i" nz-row
+                class="background-color-card mt-3">
+
+                <div nz-row [nzGutter]="24">
+                    <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                        <nz-form-label>Title<span style="color: red">*</span></nz-form-label>
+                        <nz-form-item>
+                            <input nz-input formControlName="title" placeholder="Title" class="input-field">
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                        <nz-form-label>Icon<span style="color: red">*</span></nz-form-label>
+                        <nz-form-item>
+                            <input nz-input formControlName="icon" placeholder="Title" class="input-field">
+                        </nz-form-item>
+                    </div>
+                    <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="8">
+                        <nz-form-label>Route<span style="color: red">*</span></nz-form-label>
+                        <nz-form-item>
+                            <input nz-input formControlName="route" placeholder="Title" class="input-field">
+                        </nz-form-item>
+                    </div>
+                </div>
+                <nz-col nzSpan="24">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="4">Title</nz-form-label>
+                        <nz-form-control [nzSpan]="20">
+                            <input nz-input formControlName="title" placeholder="Title" class="input-field">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="4">Icon</nz-form-label>
+                        <nz-form-control [nzSpan]="20">
+                            <input nz-input formControlName="icon" placeholder="Icon" class="input-field">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="4">Route</nz-form-label>
+                        <nz-form-control [nzSpan]="20">
+                            <input nz-input formControlName="route" placeholder="Route" class="input-field">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="4">Group Title</nz-form-label>
+                        <nz-form-control [nzSpan]="20">
+                            <input nz-input formControlName="groupTitle" placeholder="Group Title" class="input-field">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <button nz-button type="button" (click)="removeMenuItem(i)">Remove Menu Item</button>
+                    <div formArrayName="buttons">
+                        <nz-form-item *ngFor="let button of buttons(i).controls; let j = index" [formGroupName]="j"
+                            nz-row>
+                            <nz-col nzSpan="24">
+                                <nz-form-label [nzSpan]="4">Button ID</nz-form-label>
+                                <nz-form-control [nzSpan]="20">
+                                    <input class="input-field" nz-input formControlName="id" placeholder="Button ID">
+                                </nz-form-control>
+                                <button nz-button type="button" (click)="removeButton(i, j)">Remove
+                                    Button</button>
+                            </nz-col>
+                        </nz-form-item>
+                        <button nz-button nzType="dashed" type="button" (click)="addButton(i)">Add Button</button>
+                    </div>
+                    <div formArrayName="subMenu">
+                        <button nz-button nzType="dashed" type="button" (click)="addSubMenu(i)">Add SubMenu</button>
+                        <div *ngFor="let subMenu of subMenu(i).controls; let k = index" [formGroupName]="k">
+                            <nz-col nzOffset="2" nzSpan="22">
+                                <nz-form-item>
+                                    <nz-form-label [nzSpan]="4">SubMenu Title</nz-form-label>
+                                    <nz-form-control [nzSpan]="20">
+                                        <input class="input-field" nz-input formControlName="title"
+                                            placeholder="SubMenu Title">
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item>
+                                    <nz-form-label [nzSpan]="4">Route</nz-form-label>
+                                    <nz-form-control [nzSpan]="20">
+                                        <input class="input-field" nz-input formControlName="route" placeholder="Route">
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item>
+                                    <nz-form-label [nzSpan]="4">Group Title</nz-form-label>
+                                    <nz-form-control [nzSpan]="20">
+                                        <input class="input-field" nz-input formControlName="groupTitle"
+                                            placeholder="Group Title">
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <button nz-button type="button" (click)="removeSubMenu(i, k)">Remove
+                                    SubMenu</button>
+                                <div formArrayName="buttons">
+                                    <nz-form-item *ngFor="let subButton of subMenuButtons(i, k).controls; let l = index"
+                                        [formGroupName]="l" nz-row>
+                                        <nz-col nzSpan="24">
+                                            <nz-form-label [nzSpan]="4">Button ID</nz-form-label>
+                                            <nz-form-control [nzSpan]="20">
+                                                <input class="input-field" nz-input formControlName="id"
+                                                    placeholder="Button ID">
+                                            </nz-form-control>
+                                            <button nz-button type="button"
+                                                (click)="removeButtonFromSubMenu(i, k, l)">Remove Button</button>
+                                        </nz-col>
+                                    </nz-form-item>
+                                    <button nz-button nzType="dashed" type="button"
+                                        (click)="addButtonToSubMenu(i, k)">Add
+                                        Button to SubMenu</button>
+                                </div>
+                                <div formArrayName="subMenu">
+                                    <div *ngFor="let subSubMenu of subSubMenu(i, k).controls; let m = index"
+                                        [formGroupName]="m">
+                                        <nz-col nzOffset="2" nzSpan="22">
+                                            <nz-form-item>
+                                                <nz-form-label [nzSpan]="4">SubSubMenu Title</nz-form-label>
+                                                <nz-form-control [nzSpan]="20">
+                                                    <input class="input-field" nz-input formControlName="title"
+                                                        placeholder="SubSubMenu Title">
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                            <nz-form-item>
+                                                <nz-form-label [nzSpan]="4">Group Title</nz-form-label>
+                                                <nz-form-control [nzSpan]="20">
+                                                    <input class="input-field" nz-input formControlName="groupTitle"
+                                                        placeholder="Group Title">
+                                                </nz-form-control>
+                                            </nz-form-item>
+                                            <button nz-button type="button" (click)="removeSubSubMenu(i, k, m)">Remove
+                                                SubSubMenu</button>
+                                            <div formArrayName="buttons">
+                                                <nz-form-item
+                                                    *ngFor="let subSubButton of subSubMenuButtons(i, k, m).controls; let n = index"
+                                                    [formGroupName]="n" nz-row>
+                                                    <nz-col nzSpan="24">
+                                                        <nz-form-label [nzSpan]="4">Button ID</nz-form-label>
+                                                        <nz-form-control [nzSpan]="20">
+                                                            <input class="input-field" nz-input formControlName="id"
+                                                                placeholder="Button ID">
+                                                        </nz-form-control>
+                                                        <button nz-button type="button"
+                                                            (click)="removeButtonFromSubSubMenu(i, k, m, n)">Remove
+                                                            Button</button>
+                                                    </nz-col>
+                                                </nz-form-item>
+                                                <button nz-button nzType="dashed" type="button"
+                                                    (click)="addButtonToSubSubMenu(i, k, m)">Add Button to
+                                                    SubSubMenu</button>
+                                            </div>
+                                        </nz-col>
+                                    </div>
+                                    <button nz-button nzType="dashed" type="button" (click)="addSubSubMenu(i, k)">Add
+                                        SubSubMenu</button>
+                                </div>
+                            </nz-col>
+                        </div>
+
+                    </div>
+                </nz-col>
+                <hr>
+            </div>
+        </div>
+
+    </form>
+</div>

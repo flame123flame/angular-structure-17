@@ -21,6 +21,12 @@ const routes: Routes = [
     loadComponent: () => import('./pages/menus/menus.component').then(c => c.MenusComponent)
   },
   {
+    path: 'create-menus',
+    data: { breadcrumb: 'สร้างเมนู' },
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./pages/create-menus/create-menus.component').then(c => c.CreateMenusComponent)
+  },
+  {
     path: 'buttons',
     data: { breadcrumb: 'ปุ่มการใช้งาน' },
     canActivate: [AuthGuard],
